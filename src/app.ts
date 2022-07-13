@@ -4,7 +4,7 @@ const getVideoId = (url: string) => {
   return match && match[2].length === 11 ? match[2] : null;
 };
 
-const getVideoTime = (url: string) => {
+const parseVideoTime = (url: string) => {
   const regex = /[?&]t=([0-9]+)/;
   const regex2 = /[?&]start=([0-9]+)/;
   const match = url.match(regex);
@@ -14,7 +14,7 @@ const getVideoTime = (url: string) => {
 
 const getEmbedURL = (url: string) => {
   const videoId = getVideoId(url);
-  const videoTime = getVideoTime(url);
+  const videoTime = parseVideoTime(url);
   return videoId
     ? `https://www.youtube.com/embed/${videoId}${
         videoTime ? `?start=${videoTime}` : ""

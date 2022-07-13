@@ -57,7 +57,7 @@ const getVideoId = (url: string) => {
   return match && match[2].length === 11 ? match[2] : null;
 };
 
-const getVideoTime = (url: string) => {
+const parseVideoTime = (url: string) => {
   const regex = /[?&]t=([0-9]+)/;
   const regex2 = /[?&]start=([0-9]+)/;
   const match = url.match(regex);
@@ -67,7 +67,7 @@ const getVideoTime = (url: string) => {
 
 export const getEmbedURL = (url: string) => {
   const videoId = getVideoId(url);
-  const videoTime = getVideoTime(url);
+  const videoTime = parseVideoTime(url);
   return videoId
     ? `https://www.youtube.com/embed/${videoId}${
         videoTime ? `?start=${videoTime}` : ""
@@ -92,7 +92,7 @@ function test() {
 function test1() {
   tests.forEach((test) => {
     // console.log(`${(getVideoId(test) === videoId) ? `${green}success${end}` : `${red}failure${end}`} | ${test} => ${getVideoId(test)}`);
-    const time = getVideoTime(test);
+    const time = parseVideoTime(test);
     // check if time should exist based on timeSuccess array
     // console.log(`${time} | ${timeSuccess[tests.indexOf(test)]}`)
     if (timeSuccess[tests.indexOf(test)]) {
@@ -140,7 +140,7 @@ function test2() {
 }
 console.log(`\n${yellow}Testing getVideoId()${end}`);
 test();
-console.log(`\n${yellow}Testing getVideoTime()${end}`);
+console.log(`\n${yellow}Testing parseVideoTime()${end}`);
 test1();
 console.log(`\n${yellow}Testing getEmbedURL()${end}`);
 test2();

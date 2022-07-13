@@ -1,0 +1,27 @@
+{
+  "name": "youtube-url-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --config nodemon.json src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduBeyond/youtube-url-parser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EduBeyond/youtube-url-parser/issues"
+  },
+  "homepage": "https://github.com/EduBeyond/youtube-url-parser#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "ts-node": "^10.8.2"
+  }
+}
